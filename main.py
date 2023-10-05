@@ -26,4 +26,4 @@ def handle_shared_code(shared_code):
     socketio.emit('shared_code', {'sharedCode': shared_code}, include_self=True)
 
 if __name__ == '__main__':
-    socketio.run(app,debug=True, port=5000,allow_unsafe_werkzeug=True)
+    socketio.run(app,debug=True, port=5000)
