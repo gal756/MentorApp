@@ -22,4 +22,4 @@ def handle_shared_code(json):
     emit('shared_code', json, broadcast=True)
 
 if __name__ == '__main__':
-    socketio.run(app,debug=True,allow_unsafe_werkzeug=True, port=5000)
+    socketio.run(app,debug=True,allow_unsafe_werkzeug=True, port=5912)
