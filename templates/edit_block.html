@@ -8,14 +8,25 @@
 </head>
 <body>
     <header>
-        <h1>Edit Code Block</h1>
+        <h1>Async Function</h1>
     </header>
     <main>
         <!-- Basic textarea for code editing -->
-        <textarea id="code-editor" rows="15" cols="50">
+        <!-- <textarea id="code-editor" rows="15" cols="50">
             // Your code here...
-        </textarea>
+        </textarea> -->
+        <pre>
+            <code class="CSHARP" id="shared-code" contenteditable="true">
+            public void Shay()
+            {
+                int evgi = shay;
+            }
+            </code>
+        </pre>
         <button id="save-btn" class="btn">Save</button>
+        <button class="btn" onclick="copyCode()">Copy code</button>
     </main>
     <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.3.1/socket.io.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
 </body>
