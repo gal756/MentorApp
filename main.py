@@ -1,7 +1,9 @@
 from flask import Flask, render_template
 from flask_socketio import SocketIO,emit
+import os
 
 app = Flask(__name__)
+port = int(os.environ.get("PORT", 5912))
 socketio = SocketIO(app, cors_allowed_origins="*")
 
 @app.route('/')
