@@ -1,8 +1,8 @@
-from flask import Flask, render_template, request
-from flask_socketio import SocketIO
+from flask import Flask, render_template
+from flask_socketio import SocketIO, emit
 
 app = Flask(__name__)
-socketio = SocketIO(app)
+socketio = SocketIO(app, cors_allowed_origins="*")
 
 @app.route('/')
 def index():
@@ -16,14 +16,10 @@ def code_block():
 def edit_code():
     return render_template('edit_block.html')
 
-@socketio.on('message')
-def handle_message(message):
-    print("Message received: " + message)
-    socketio.emit('message', {'message': message}, room=request.sid, include_self=False)
-
 @socketio.on('shared_code')
-def handle_shared_code(shared_code):
-    socketio.emit('shared_code', {'sharedCode': shared_code}, include_self=True)
+def handle_shared_code(json):
+    # Broadcast the received code to all connected clients
+    emit('shared_code', json, broadcast=True)
 
 if __name__ == '__main__':
     socketio.run(app,debug=True,allow_unsafe_werkzeug=True, port=5000)

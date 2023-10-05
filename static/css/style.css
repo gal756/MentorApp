@@ -30,6 +30,11 @@ main {
     color: white;
     border-radius: 5px;
 }
+#shared-code {
+    direction: ltr;
+    text-align: left;
+    unicode-bidi: embed;
+}
 
 .CSHARP {
     width: 100%;

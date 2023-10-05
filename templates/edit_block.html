@@ -1,29 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/stackoverflow-light.min.css">
     <title>Mentor App</title>
 </head>
+
 <body>
     <header>
         <h1>Async Function</h1>
     </header>
     <main>
-        <!-- Basic textarea for code editing -->
-        <!-- <textarea id="code-editor" rows="15" cols="50">
-            // Your code here...
-        </textarea> -->
         <pre>
-            <code class="CSHARP" id="shared-code" contenteditable="true">
+            <code class="javascript" id="shared-code" contenteditable="true">
             example code here...
             </code>
         </pre>
         <button id="save-btn" class="btn">Save</button>
         <button class="btn" onclick="copyCode()">Copy code</button>
     </main>
-    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.3.1/socket.io.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
 </body>
+
+</html>
