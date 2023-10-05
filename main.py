@@ -1,6 +1,8 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
+from flask_socketio import SocketIO
 
 app = Flask(__name__)
+socketio = SocketIO(app)
 
 @app.route('/')
 def index():
@@ -14,5 +16,14 @@ def code_block():
 def edit_code():
     return render_template('edit_block.html')
 
+@socketio.on('message')
+def handle_message(message):
+    print("Message received: " + message)
+    socketio.emit('message', {'message': message}, room=request.sid, include_self=False)
+
+@socketio.on('shared_code')
+def handle_shared_code(shared_code):
+    socketio.emit('shared_code', {'sharedCode': shared_code}, include_self=True)
+
 if __name__ == '__main__':
-    app.run(debug=True, port=5000)
+    socketio.run(app,debug=True, port=5000,allow_unsafe_werkzeug=True)
