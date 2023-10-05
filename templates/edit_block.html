@@ -1,0 +1,14 @@
+<!-- Similar structure as index.html -->
+<body>
+    <header>
+        <h1>Edit Code Block</h1>
+    </header>
+    <main>
+        <!-- Basic textarea for code editing -->
+        <textarea id="code-editor" rows="15" cols="50">
+            // Your code here...
+        </textarea>
+        <button id="save-btn" class="btn">Save</button>
+    </main>
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
