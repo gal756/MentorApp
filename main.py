@@ -18,6 +18,10 @@ def code_block():
 def edit_code():
     return render_template('edit_block.html')
 
+@app.route('/view_block')
+def view_block():
+    return render_template('view_block.html')
+
 @socketio.on('shared_code')
 def handle_shared_code(json):
     # Broadcast the received code to all connected clients
