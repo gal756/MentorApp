@@ -3,7 +3,7 @@ from flask_socketio import SocketIO,emit
 import os
 
 app = Flask(__name__)
-port = int(os.environ.get("PORT", 5912))
+port = int(os.environ.get("PORT", 5000))
 socketio = SocketIO(app, cors_allowed_origins="*")
 
 @app.route('/')
@@ -28,4 +28,4 @@ def handle_code_change(json):
     emit('update_code', json, broadcast=True, include_self=False)
 
 if __name__ == '__main__':
-    socketio.run(app,debug=True, port=5912)
+    socketio.run(app,debug=True, port=5000)
