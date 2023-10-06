@@ -1,0 +1,10 @@
+Return the Sum of Two Numbers
+very easy
+Create a function that takes two numbers as arguments and returns their sum.
+
+function addTwoNumbers(num1, num2) {
+    return num1 + num2;
+}
+
+var sum = addTwoNumbers(5, 3);
+console.log("The sum is: " + sum);

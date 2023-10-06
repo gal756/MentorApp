@@ -9,3 +9,4 @@ flask-socketio
 eventlet
 dnspython
 gevent-websocket
+psycopg2-binary
