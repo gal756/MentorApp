@@ -22,10 +22,10 @@ def edit_code():
 def view_block():
     return render_template('view_block.html')
 
-@socketio.on('shared_code')
-def handle_shared_code(json):
-    # Broadcast the received code to all connected clients
-    emit('shared_code', json, broadcast=True)
+@socketio.on('code_change')
+def handle_code_change(json):
+    # Broadcast the received code to all connected clients except the sender
+    emit('update_code', json, broadcast=True, include_self=False)
 
 if __name__ == '__main__':
     socketio.run(app,debug=True,allow_unsafe_werkzeug=True, port=5912)

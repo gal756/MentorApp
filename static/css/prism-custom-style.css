@@ -50,7 +50,7 @@ main {
     cursor: pointer;
 }
 
-#editing, #highlighting {
+#editing, #highlighting, #viewing {
     margin: 0 2rem;
     padding: 1rem;
     border: 4px;
@@ -62,9 +62,14 @@ main {
     -moz-border-radius: 4px ;
     -ms-border-radius: 4px ;
     -o-border-radius: 4px ;
+    position: absolute;
+    top: 10;
+    left: 0;
+    overflow: auto;
+    white-space: nowrap; /* Allows textarea to scroll horizontally */
 }
 
-  #editing, #highlighting, #highlighting * {
+  #editing,#viewing, #highlighting, #highlighting * {
     /* Also add text styles to highlighting tokens */
     font-size: 15pt;
     font-family: monospace;
@@ -72,29 +77,14 @@ main {
     tab-size: 2;
   }
 
-  #editing, #highlighting {
-    position: absolute;
-    top: 10;
-    left: 0;
-  }
-
-  #editing {
+  #editing ,#viewing{
     z-index: 1;
-  }
-
-  #highlighting {
-    z-index: 0;
-  }
-
-  /* Make textarea almost completely transparent */
-#editing {
     color: transparent;
     background: transparent;
     caret-color: #4682b4; /* Or choose your favorite color */
     resize: none;
   }
 
-  #editing, #highlighting {
-    overflow: auto;
-    white-space: nowrap; /* Allows textarea to scroll horizontally */
+  #highlighting {
+    z-index: 0;
   }

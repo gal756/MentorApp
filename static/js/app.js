@@ -8,6 +8,7 @@ function update(text) {
     result_element.innerHTML = text.replace(new RegExp("&", "g"), "&").replace(new RegExp("<", "g"), "<"); /* Global RegExp */
     // Syntax Highlight
     Prism.highlightElement(result_element);
+    emitCodeChange(text);
 }
 
 function sync_scroll(element) {
@@ -33,3 +34,9 @@ function sync_scroll(element) {
       update(element.value); // Update text to include indent
     }
   }
+/*This function emits the 'code_change' event to the server, sending the current text in the textarea as data.*/
+  function emitCodeChange(text) {
+    const socketIoUrl = window.location.protocol + '//' + window.location.hostname + (window.location.port ? ':' + window.location.port : '');
+    const socket = io.connect(socketIoUrl);
+    socket.emit('code_change', { code: text });
+}
