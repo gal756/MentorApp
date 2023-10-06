@@ -2,7 +2,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f0f8ff;
+    background-color: #d5e3f0;
 }
 
 header {
@@ -31,7 +31,7 @@ main {
     color: white;
     border-radius: 5px;
     position: relative; /* Ensures the button is in the document flow */
-    top: 180px; /* Adjusted to appear below the editing/highlighting areas */
+    top: 330px; /* Adjusted to appear below the editing/highlighting areas */
 }
 
 #shared-code {
@@ -51,13 +51,18 @@ main {
 }
 
 #editing, #highlighting {
-    /* Both elements need the same text and space styling so they are directly on top of each other */
-    margin: 10px;
-    padding: 10px;
-    border: 0;
-    width: calc(100% - 32px);
-    height: 150px;
-  }
+    margin: 0 2rem;
+    padding: 1rem;
+    border: 4px;
+    border-color: rgb(158, 210, 255);
+    width: calc(100% - 100px);
+    height: 300px;
+    border-radius: 4px ;
+    -webkit-border-radius: 4px ;
+    -moz-border-radius: 4px ;
+    -ms-border-radius: 4px ;
+    -o-border-radius: 4px ;
+}
 
   #editing, #highlighting, #highlighting * {
     /* Also add text styles to highlighting tokens */
@@ -69,7 +74,7 @@ main {
 
   #editing, #highlighting {
     position: absolute;
-    top: 0;
+    top: 10;
     left: 0;
   }
 
@@ -85,7 +90,7 @@ main {
 #editing {
     color: transparent;
     background: transparent;
-    caret-color: white; /* Or choose your favorite color */
+    caret-color: #4682b4; /* Or choose your favorite color */
     resize: none;
   }
 
