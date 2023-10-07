@@ -11,14 +11,6 @@ DATABASE_CONFIG = {
     "port": os.environ.get("DB_PORT", "default_port")
 }
 
-# DATABASE_CONFIG = {
-#     "dbname": "railway",
-#     "user": "postgres",
-#     "password": "Qv9ObinCokJ26U0tdUKV",
-#     "host": "containers-us-west-64.railway.app",
-#     "port": "5833"
-# }
-
 app = Flask(__name__)
 port = int(os.environ.get("PORT", 5000))
 socketio = SocketIO(app, cors_allowed_origins="*")
