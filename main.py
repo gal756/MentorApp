@@ -4,12 +4,20 @@ import psycopg2
 import os
 
 DATABASE_CONFIG = {
-    "dbname": "railway",
-    "user": "postgres",
-    "password": "Qv9ObinCokJ26U0tdUKV",
-    "host": "containers-us-west-64.railway.app",
-    "port": "5833"
+    "dbname": os.environ.get("DB_NAME", "default_db_name"),
+    "user": os.environ.get("DB_USER", "default_user"),
+    "password": os.environ.get("DB_PASSWORD", "default_password"),
+    "host": os.environ.get("DB_HOST", "default_host"),
+    "port": os.environ.get("DB_PORT", "default_port")
 }
+
+# DATABASE_CONFIG = {
+#     "dbname": "railway",
+#     "user": "postgres",
+#     "password": "Qv9ObinCokJ26U0tdUKV",
+#     "host": "containers-us-west-64.railway.app",
+#     "port": "5833"
+# }
 
 app = Flask(__name__)
 port = int(os.environ.get("PORT", 5000))
