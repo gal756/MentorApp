@@ -44,3 +44,45 @@ main {
     cursor: pointer;
 }
 
+#problem-info {
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #f8f8f8;
+    border: 1px solid #ccc;
+}
+
+#problem-info h2 {
+    margin-top: 0;
+}
+
+#problem-info p {
+    margin: 5px 0;
+}
+
+.btn-upload {
+    display: inline-block;
+    padding: 12px 25px;
+    margin: 10px;
+    text-decoration: none;
+    background-color: #f80e0e;
+    color: #2B10C4;
+    border-radius: 5px;
+    position: relative;
+    font-weight: bold;
+    border: 2px solid #2B10C4;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    top: 180px;
+}
+
+.btn-upload:hover, .btn-upload:focus {
+    background-color: #2B10C4;
+    color: #FFFFFF;
+    border-color: #FFFFFF;
+    cursor: pointer;
+}
+
+.btn-upload:active {
+    background-color: #1a076d;
+    color: #FFFFFF;
+    border-color: #FFFFFF;
+}

@@ -35,3 +35,18 @@ function sync_scroll(element) {
     const socket = io.connect(socketIoUrl);
     socket.emit('code_change', { code: text });
 }
+
+function copyCode() {
+  // Get the textarea element
+  var copyText = document.getElementById("editing");
+
+  // Select the text
+  copyText.select();
+  copyText.setSelectionRange(0, 99999); // For mobile devices
+
+  // Copy the text to the clipboard
+  document.execCommand("copy");
+
+  // (Optional) Alert the copied text
+  alert("Copied the code: " + copyText.value);
+}

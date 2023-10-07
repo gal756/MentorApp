@@ -1,0 +1,9 @@
+Find the Largest Number in an Array
+Easy
+Create a function that takes an array of numbers and returns the largest number in the array.
+
+function findLargestNumber(arr) {
+    return Math.max(...arr);
+}
+var largestNum = findLargestNumber([1, 3, 5, 7, 9]);
+console.log("The largest number is: " + largestNum);

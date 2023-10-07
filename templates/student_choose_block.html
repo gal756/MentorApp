@@ -8,11 +8,12 @@
 </head>
 <body>
     <header>
-        <h1>Choose a Code Block</h1>
+        <h1>Mentor App</h1>
     </header>
     <main>
-        <!-- Example code blocks links -->
-        <a href="/edit_block" class="btn">Code Block edit</a>
-        <a href="/view_block" class="btn">Code Block view</a>
+        <!-- Loop through problems and create a button for each -->
+        {% for problem in problems %}
+            <a href="/edit_block/{{ problem[0] }}" class="btn">{{ problem[1] }} - {{ problem[2] }}</a>
+        {% endfor %}
     </main>
 </body>

@@ -1,0 +1,11 @@
+Check for Palindromes
+Medium
+Create a function that takes a string as an argument and returns true if the string is a palindrome and false if it is not. (A palindrome is a word that's the same backward as forward).
+
+function isPalindrome(str) {
+    var reversedStr = str.split('').reverse().join('');
+    return str === reversedStr;
+}
+
+var checkPalindrome = isPalindrome("madam");
+console.log("Is the word a palindrome? " + checkPalindrome);

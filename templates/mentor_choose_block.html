@@ -11,8 +11,9 @@
         <h1>Mentor App</h1>
     </header>
     <main>
-        <a href="/student_choose_block" class="btn">Start as student</a>
-        <a href="/mentor_choose_block" class="btn">Start as mentor</a>
+        {% for problem in problems %}
+            <a href="/view_block/{{ problem[0] }}" class="btn">{{ problem[1] }} - {{ problem[2] }}</a>
+        {% endfor %}
+        <a href="/upload" class="btn-upload">Upload new questions to Database</a>
     </main>
 </body>
-</html>

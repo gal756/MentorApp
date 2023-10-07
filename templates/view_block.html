@@ -12,9 +12,15 @@
 
 <body>
     <header>
-        <h1>View Shared Code</h1>
+        <h1>Mentor App</h1>
     </header>
     <main>
+        <section id="problem-info">
+            <h2>{{ problem[1] }}</h2> <!-- Problem Name -->
+            <p><strong>Difficulty:</strong> {{ problem[2] }}</p> <!-- Difficulty -->
+            <p><strong>Description:</strong> {{ problem[3] }}</p> <!-- Exercise Description -->
+            <p><strong>solution:</strong> {{ problem[4] }}</p> <!-- Exercise solution -->
+        </section>
         <textarea id="viewing" readonly></textarea>
         <pre id="highlighting" aria-hidden="true">
             <code class="language-javascript" id="highlighting-content"></code> 

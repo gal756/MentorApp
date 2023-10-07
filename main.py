@@ -26,19 +26,62 @@ def index():
     return render_template('index.html')
 
 
-@app.route('/choose_block')
-def code_block():
-    return render_template('choose_block.html')
+@app.route('/student_choose_block')
+def student_block():
+    try:
+        conn = psycopg2.connect(**DATABASE_CONFIG)
+        cur = conn.cursor()
+        # Query to get the last 4 problems ordered by id
+        cur.execute("SELECT * FROM code_problems ORDER BY id DESC LIMIT 4")
+        problems = cur.fetchall()
+
+    except psycopg2.Error as e:
+        print(f"Error interacting with database: {e}")
+        problems = []
+    finally:
+        cur.close()
+        conn.close()
+    return render_template('student_choose_block.html', problems=problems)
 
 
-@app.route('/edit_block')
-def edit_code():
-    return render_template('edit_block.html')
+@app.route('/mentor_choose_block')
+def mentor_block():
+    try:
+        conn = psycopg2.connect(**DATABASE_CONFIG)
+        cur = conn.cursor()
+        # Query to get the last 4 problems ordered by id
+        cur.execute("SELECT * FROM code_problems ORDER BY id DESC LIMIT 4")
+        problems = cur.fetchall()
 
+    except psycopg2.Error as e:
+        print(f"Error interacting with database: {e}")
+        problems = []
+    finally:
+        cur.close()
+        conn.close()
+    return render_template('mentor_choose_block.html', problems=problems)
 
-@app.route('/view_block')
-def view_block():
-    return render_template('view_block.html')
+@app.route('/edit_block/<int:problem_id>')
+def edit_block(problem_id):
+    cur = conn.cursor()
+    cur.execute("SELECT * FROM code_problems WHERE id = %s", (problem_id,))
+    problem = cur.fetchone()
+    cur.close()
+    if problem is None:
+        # Handle the case where no problem is found
+        return render_template('404.html'), 404
+    return render_template('edit_block.html', problem=problem)
+
+@app.route('/view_block/<int:problem_id>')
+def view_block(problem_id):
+    cur = conn.cursor()
+    cur.execute("SELECT * FROM code_problems WHERE id = %s", (problem_id,))
+    problem = cur.fetchone()
+    cur.close()
+    if problem is None:
+        # Handle the case where no problem is found
+        return render_template('404.html'), 404
+    return render_template('view_block.html', problem=problem)
 
 
 @app.route('/upload')

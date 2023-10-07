@@ -1,0 +1,9 @@
+Reverse a String
+Easy
+Create a function that takes a string as an argument and returns the string in reversed order.
+
+function reverseString(str) {
+    return str.split('').reverse().join('');
+}
+var reversed = reverseString("Hello World");
+console.log("Reversed string is: " + reversed);
