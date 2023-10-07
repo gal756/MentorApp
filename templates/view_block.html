@@ -15,24 +15,26 @@
         <h1>View Shared Code</h1>
     </header>
     <main>
-        <textarea id="viewing" readonly></textarea>
         <pre id="highlighting" aria-hidden="true">
-            <code class="language-javascript" id="highlighting-content"></code>
+            <code class="language-javascript" id="highlighting-content"></code> 
         </pre>
     </main>
     <!-- Include Prism JS -->
     <script src="/static/js/prism.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.3.1/socket.io.js" defer></script>
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener("DOMContentLoaded", function () {
             // Dynamically determine the Socket.IO server URL
             const socketIoUrl = window.location.protocol + '//' + window.location.hostname + (window.location.port ? ':' + window.location.port : '');
             const socket = io.connect(socketIoUrl);
-            
-            socket.on('update_code', function(data) {
-                document.getElementById('viewing').value = data.code;
-                document.getElementById('highlighting-content').innerText = data.code;
-                Prism.highlightElement(document.getElementById('highlighting-content'));
+            socket.on('update_code', function (data) {
+                let codeWithNewlines = data.code.replace(/\\n/g, "\n");; // Explicitly handle newline characters
+                console.log(data);
+                document.getElementById('highlighting-content').innerText = codeWithNewlines;
+                Prism.hooks.add('before-highlight', function (env) {
+                    env.code = env.element.innerText;
+                });
+                // Prism.highlightElement(document.getElementById('highlighting-content'));
             });
         });
     </script>

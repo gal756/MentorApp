@@ -1,11 +1,6 @@
 function update(text) {
     let result_element = document.querySelector("#highlighting-content");
-    // Handle final newlines (see article)
-    if(text[text.length-1] == "\n") { // If the last character is a newline character
-      text += " "; // Add a placeholder space character to the final line 
-    }
-    // Update code
-    result_element.innerHTML = text.replace(new RegExp("&", "g"), "&").replace(new RegExp("<", "g"), "<"); /* Global RegExp */
+    result_element.textContent  = text;
     // Syntax Highlight
     Prism.highlightElement(result_element);
     emitCodeChange(text);

@@ -88,3 +88,11 @@ main {
   #highlighting {
     z-index: 0;
   }
+
+  #highlighting-content {
+    white-space: pre-wrap;
+}
+
+code {
+    white-space: pre-wrap;
+}

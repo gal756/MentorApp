@@ -34,12 +34,6 @@ main {
     top: 180px; /* Adjusted to appear below the editing/highlighting areas */
 }
 
-#shared-code {
-    direction: ltr;
-    text-align: left;
-    unicode-bidi: embed;
-}
-
 .CSHARP {
     width: 100%;
     margin-top: 20px;

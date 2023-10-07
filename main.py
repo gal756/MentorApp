@@ -67,7 +67,7 @@ def upload():
                         solution = "\n".join(content[4:])
 
                     cur.execute("""
-                        INSERT INTO code_problems (id, problem_name, difficulty, exercise_description, solution) 
+                        INSERT INTO code_problems (id, problem_name, difficulty, exercise_description, solution)
                         VALUES (%s, %s, %s, %s, %s)
                     """, (problem_id, problem_name, difficulty, exercise_description, solution))
                     conn.commit()
