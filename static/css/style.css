@@ -31,7 +31,7 @@ main {
     color: white;
     border-radius: 5px;
     position: relative; /* Ensures the button is in the document flow */
-    top: 180px; /* Adjusted to appear below the editing/highlighting areas */
+    top: 5rem; /* Adjusted to appear below the editing/highlighting areas */
 }
 
 .CSHARP {
