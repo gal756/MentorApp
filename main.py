@@ -3,6 +3,7 @@ from flask_socketio import SocketIO, emit
 import psycopg2
 import os
 
+# Database configuration using environment variables
 DATABASE_CONFIG = {
     "dbname": os.environ.get("DB_NAME", "default_db_name"),
     "user": os.environ.get("DB_USER", "default_user"),
@@ -11,21 +12,27 @@ DATABASE_CONFIG = {
     "port": os.environ.get("DB_PORT", "default_port")
 }
 
+# Global variable to store the current problem being edited by a student
 current_student_problem = None
+
+# Flask application setup
 app = Flask(__name__)
 port = int(os.environ.get("PORT", 5000))
 socketio = SocketIO(app, cors_allowed_origins="*")
 
+# Attempt to connect to the PostgreSQL database
 try:
     conn = psycopg2.connect(**DATABASE_CONFIG)
 except psycopg2.OperationalError as e:
+    # Print an error message if the connection fails
     print(f"Could not connect to the database: {e}")
 
+# Define the route for the homepage
 @app.route('/')
 def index():
     return render_template('index.html')
 
-
+# Route for students to choose a code block
 @app.route('/student_choose_block')
 def student_block():
     try:
@@ -36,14 +43,16 @@ def student_block():
         problems = cur.fetchall()
 
     except psycopg2.Error as e:
+        # Print an error message if there is an issue with the database
         print(f"Error interacting with database: {e}")
         problems = []
     finally:
+        # Close the database connection
         cur.close()
         conn.close()
     return render_template('student_choose_block.html', problems=problems)
 
-
+# Route for mentors to choose a code block
 @app.route('/mentor_choose_block')
 def mentor_block():
     global current_student_problem
@@ -55,14 +64,16 @@ def mentor_block():
         problems = cur.fetchall()
 
     except psycopg2.Error as e:
+        # Print an error message if there is an issue with the database
         print(f"Error interacting with the database: {e}")
         problems = []
     finally:
+        # Close the database connection
         cur.close()
         conn.close()
     return render_template('mentor_choose_block.html', problems=problems, current_student_problem=current_student_problem)
 
-
+# Route for editing a specific code block
 @app.route('/edit_block/<int:problem_id>')
 def edit_block(problem_id):
     global current_student_problem  # Access the global variable
@@ -75,11 +86,12 @@ def edit_block(problem_id):
         # Handle the case where no problem is found
         return render_template('404.html'), 404
 
-    # Update the global variable
+    # Update the global variable with the current problem being edited by a student
     current_student_problem = problem_id
 
     return render_template('edit_block.html', problem=problem)
 
+# Route for viewing a specific code block
 @app.route('/view_block/<int:problem_id>')
 def view_block(problem_id):
     cur = conn.cursor()
@@ -91,7 +103,7 @@ def view_block(problem_id):
         return render_template('404.html'), 404
     return render_template('view_block.html', problem=problem)
 
-
+# Route for uploading problems from files to the database
 @app.route('/upload')
 def upload():
     # Directory where problem files are stored
@@ -123,18 +135,21 @@ def upload():
                     """, (problem_id, problem_name, difficulty, exercise_description, solution))
                     conn.commit()
     except psycopg2.Error as e:
+        # Print an error message if there is an issue with the database
         print(f"Error interacting with database: {e}")
     finally:
+        # Close the database connection
         cur.close()
         conn.close()
 
     return redirect(url_for('index'))
 
-
+# SocketIO event handler for handling code changes
 @socketio.on('code_change')
 def handle_code_change(json):
     # Broadcast the received code to all connected clients except the sender
     emit('update_code', json, broadcast=True, include_self=False)
 
+# Run the Flask application with SocketIO support
 if __name__ == '__main__':
     socketio.run(app, debug=True, port=5000)
