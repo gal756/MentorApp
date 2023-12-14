@@ -14,7 +14,7 @@
     </header>
     <main>
         {% for problem in problems %}
-            <a href="/view_block/{{ problem[0] }}" class="btn {% if current_student_problem == problem[0] %}active{% else %}disabled{% endif %}" {% if current_student_problem != problem[0] %}onclick="return false;"{% endif %}>
+            <a href="/view_block/{{ problem[0] }}" class="btn {% if current_student_problem == problem[0] %}active{% else %}disabled{% endif %}">
                 {{ problem[1] }} - {{ problem[2] }}
             </a>
         {% endfor %}
