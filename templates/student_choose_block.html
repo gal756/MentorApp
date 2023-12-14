@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/static/css/style.css">
     <title>Mentor App</title>
+    <style>
+        .btn-selected {
+            background-color: #00ff00; /* Change this to the desired color */
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -13,7 +18,21 @@
     <main>
         <!-- Loop through problems and create a button for each -->
         {% for problem in problems %}
-            <a href="/edit_block/{{ problem[0] }}" class="btn">{{ problem[1] }} - {{ problem[2] }}</a>
+            <a href="/edit_block/{{ problem[0] }}" class="btn" onclick="markSelected(this)">{{ problem[1] }} - {{ problem[2] }}</a>
         {% endfor %}
     </main>
+
+    <script>
+        function markSelected(button) {
+            // Remove the 'btn-selected' class from all buttons
+            var buttons = document.querySelectorAll('.btn');
+            buttons.forEach(function (btn) {
+                btn.classList.remove('btn-selected');
+            });
+
+            // Add the 'btn-selected' class to the clicked button
+            button.classList.add('btn-selected');
+        }
+    </script>
 </body>
+</html>
