@@ -24,14 +24,19 @@
 
     <script>
         function markSelected(button) {
-            // Remove the 'btn-selected' class from all buttons
             var buttons = document.querySelectorAll('.btn');
             buttons.forEach(function (btn) {
                 btn.classList.remove('btn-selected');
             });
 
-            // Add the 'btn-selected' class to the clicked button
             button.classList.add('btn-selected');
+
+            // Send an AJAX request to notify the server about the selected button
+            var problemId = button.href.split('/').pop();
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', '/update_selected_problem/' + problemId, true);
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.send(JSON.stringify({ selected: true }));
         }
     </script>
 </body>

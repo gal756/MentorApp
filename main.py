@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, url_for
+from flask import Flask, render_template, redirect, url_for , jsonify
 from flask_socketio import SocketIO, emit
 import psycopg2
 import os
@@ -121,6 +121,12 @@ def upload():
         conn.close()
 
     return redirect(url_for('index'))
+
+@app.route('/update_selected_problem/<int:problem_id>', methods=['POST'])
+def update_selected_problem(problem_id):
+    # Broadcast the selected problem ID to all connected mentors through Socket.IO
+    socketio.emit('update_selected_problem', {'problem_id': problem_id}, namespace='/mentor')
+    return jsonify({'success': True})
 
 
 @socketio.on('code_change')

@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/static/css/style.css">
     <title>Mentor App</title>
+    <style>
+        .selected-problem {
+            background-color: #00ff00; /* Change this to the desired color */
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -12,8 +17,30 @@
     </header>
     <main>
         {% for problem in problems %}
-            <a href="/view_block/{{ problem[0] }}" class="btn">{{ problem[1] }} - {{ problem[2] }}</a>
+            <a href="/view_block/{{ problem[0] }}" class="btn {% if selected_problem_id == problem[0] %}selected-problem{% endif %}">{{ problem[1] }} - {{ problem[2] }}</a>
         {% endfor %}
         <a href="/upload" class="btn-upload">Upload new questions to Database</a>
     </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.3/socket.io.js"></script>
+    <script>
+        var socket = io.connect('http://' + document.domain + ':' + location.port + '/mentor');
+
+        socket.on('update_selected_problem', function(data) {
+            var problemId = data.problem_id;
+
+            // Remove the 'selected-problem' class from all buttons
+            var buttons = document.querySelectorAll('.btn');
+            buttons.forEach(function (btn) {
+                btn.classList.remove('selected-problem');
+            });
+
+            // Add the 'selected-problem' class to the button with the selected problem ID
+            var selectedButton = document.querySelector('.btn[data-problem-id="' + problemId + '"]');
+            if (selectedButton) {
+                selectedButton.classList.add('selected-problem');
+            }
+        });
+    </script>
 </body>
+</html>
