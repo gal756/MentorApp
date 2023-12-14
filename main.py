@@ -44,8 +44,9 @@ def student_block():
     return render_template('student_choose_block.html', problems=problems)
 
 
-@app.route('/mentor_choose_block/<int:current_student_problem>')
-def mentor_block(current_student_problem):
+@app.route('/mentor_choose_block')
+def mentor_block():
+    global current_student_problem
     try:
         conn = psycopg2.connect(**DATABASE_CONFIG)
         cur = conn.cursor()
