@@ -1,34 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/static/css/style.css">
-    <link rel="shortcut icon" type="image/x-icon" href="/static/favicon.ico">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@1&display=swap" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/static/css/style.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="/static/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@1&display=swap"
+      rel="stylesheet"
+    />
     <title>Mentor App</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <header>
-        <a class= header_a href="/">
-            <h1>Mentor App</h1>
-        </a>
+      <a class="header_a" href="/">
+        <h1>Mentor App</h1>
+      </a>
     </header>
     <main>
+      <div class="app-main-btn">
         {% for problem in problems %}
-            <a href="/view_block/{{ problem[0] }}" class="btn {% if current_student_problem == problem[0] %}active{% else %}disabled{% endif %}">
-                {{ problem[1] }} - {{ problem[2] }}
-            </a>
+        <a
+          href="/view_block/{{ problem[0] }}"
+          class="btn {% if current_student_problem == problem[0] %}active{% else %}disabled{% endif %}"
+        >
+          {{ problem[1] }} - {{ problem[2] }}
+        </a>
         {% endfor %}
-        <a href="/upload" class="btn-upload">Upload new questions to Database</a>
-        <p class="user-choice-explanation">
-            The highlighted button represents the current user problem choice.
-        </p>
+        <a href="/upload" class="btn-upload"
+          >Upload new questions to Database</a
+        >
+      </div>
+      <p class="user-choice-explanation">
+        The highlighted button represents the current user problem choice.
+      </p>
     </main>
-</body>
-
+  </body>
 </html>

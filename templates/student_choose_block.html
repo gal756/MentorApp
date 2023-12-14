@@ -1,28 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/static/css/style.css">
-    <link rel="shortcut icon" type="image/x-icon" href="/static/favicon.ico">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@1&display=swap" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/static/css/style.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="/static/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@1&display=swap"
+      rel="stylesheet"
+    />
     <title>Mentor App</title>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <a class= header_a href="/">
-            <h1>Mentor App</h1>
-        </a>
+      <a class="header_a" href="/">
+        <h1>Mentor App</h1>
+      </a>
     </header>
     <main>
+      <div class="app-main-btn">
         <!-- Loop through problems and create a button for each -->
         {% for problem in problems %}
-            <a href="/edit_block/{{ problem[0] }}" class="btn">{{ problem[1] }} - {{ problem[2] }}</a>
+        <a href="/edit_block/{{ problem[0] }}" class="btn"
+          >{{ problem[1] }} - {{ problem[2] }}</a
+        >
         {% endfor %}
-        <p class="user-choice-explanation">
-            Please choose the problem that you wish to solve
-        </p>
+      </div>
+      <p class="user-choice-explanation">
+        Please choose the problem that you wish to solve
+      </p>
     </main>
-</body>
+  </body>
+</html>
