@@ -34,6 +34,10 @@ main {
     top: 330px; /* Adjusted to appear below the editing/highlighting areas */
 }
 
+.btn:hover{
+    background-color: #2b4f81; /* Change the background color on hover */
+    color: white; /* Change the text color on hover */
+}
 #shared-code {
     direction: ltr;
     text-align: left;
