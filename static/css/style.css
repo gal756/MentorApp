@@ -34,6 +34,11 @@ main {
     top: 5rem; /* Adjusted to appear below the editing/highlighting areas */
 }
 
+.btn:hover, .btn.active:hover {
+    background-color: #2b4f81; /* Change the background color on hover */
+    color: white; /* Change the text color on hover */
+}
+
 .CSHARP {
     width: 100%;
     margin-top: 20px;
@@ -97,4 +102,10 @@ main {
     margin-top: 10px;
     font-style: italic;
     color: #555;
+}
+
+.app-explanation {
+    max-width: 600px; /* Adjust the max-width to your preference */
+    margin: 0 auto; /* Center the content */
+    text-align: justify; /* Justify text for better readability */
 }
