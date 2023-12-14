@@ -26,7 +26,7 @@ Backend:
 3.psycopg2 for PostgreSQL database interaction  
 Frontend:  
 1.HTML, CSS, and JavaScript  
-2.Highlight.js (or equivalent library) for syntax highlighting
+2.Prism.js for syntax highlighting
 
 ## Contributing:
 The project is open to contributions. If you'd like to contribute, please follow the guidelines outlined in the project repository.
