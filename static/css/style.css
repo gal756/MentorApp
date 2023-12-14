@@ -22,7 +22,7 @@ main {
     position: relative; /* Added to establish a positioning context for absolute children */
 }
 
-.btn {
+.btn .btn.active {
     display: inline-block;
     padding: 10px 20px;
     margin: 10px;
@@ -87,21 +87,10 @@ main {
     border-color: #FFFFFF;
 }
 
-.highlighted-btn {
-    background-color: yellow; /* Set the desired highlighted color */
-}
-
-/* Style for the active button */
-.btn.active {
-    background-color: #4CAF50; /* Green color, change it to your desired active color */
-    color: white;
-    cursor: pointer; /* Add a pointer cursor to indicate it's clickable */
-}
-
 /* Style for the disabled button */
 .btn.disabled {
-    background-color: #808080; /* Gray color, change it to your desired disabled color */
-    color: #ffffff; /* Text color for better contrast */
-    cursor: not-allowed; /* Change cursor to not-allowed to indicate it's not clickable */
-    pointer-events: none; /* Disable pointer events to prevent interaction */
+    background-color: #808080;
+    color: #ffffff;
+    cursor: not-allowed;
+    pointer-events: none;
 }
