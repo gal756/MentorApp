@@ -6,7 +6,7 @@ Welcome to the Code Mentor Web App, a platform designed to facilitate remote cod
 The Mentor Web App is a collaborative coding platform designed to facilitate remote coding sessions between mentors and students. The primary goal is to create an interactive and real-time coding environment that allows mentors to share code, observe students as they code, and provide guidance during coding sessions.
 
 ## Features:
-1.Lobby for Code Block Selection:Users, both mentors, and students start on a lobby page where they can choose from a list of code blocks.each code block represent aproblem from the Database.
+1.Lobby for Code Block Selection:Users, both mentors, and students start on a lobby page where they can choose from a list of code blocks.each code block represent aproblem from the Database.  
 2.Individual Code Block Pages:After selecting a code block, users are directed to an individual page dedicated to that specific code block.
 3.Real-Time Code Changes:The web app employs a Socket connection to enable real-time code changes. This feature ensures that both mentors and students can see code modifications instantly.
 4.Syntax Highlighting:The app supports syntax highlighting for JavaScript code, enhancing the readability and understanding of the code snippets.
