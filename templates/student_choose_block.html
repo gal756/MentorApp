@@ -1,25 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/static/css/style.css" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/style.css">
     <title>Mentor App</title>
-  </head>
-  <body>
+</head>
+<body>
     <header>
-      <h1>Mentor App</h1>
+        <h1>Mentor App</h1>
     </header>
     <main>
-      <!-- Loop through problems and create a button for each -->
-      {% for problem in problems %}
-      <a
-        href="{{ url_for('mentor_block', student_saw_problem=1 if student_saw_problem_for_problem(problem) else 0, problem_id=problem[0]) }}"
-        class="btn"
-      >
-        {{ problem[1] }} - {{ problem[2] }}
-      </a>
-      {% endfor %}
+        <!-- Loop through problems and create a button for each -->
+        {% for problem in problems %}
+            <a href="/edit_block/{{ problem[0] }}" class="btn">{{ problem[1] }} - {{ problem[2] }}</a>
+        {% endfor %}
     </main>
-  </body>
-</html>
+</body>

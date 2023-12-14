@@ -12,15 +12,8 @@
     </header>
     <main>
         {% for problem in problems %}
-        <a href="/view_block/{{ problem[0] }}" class="btn {% if selected_problem_id == problem[0] %}highlighted-btn{% endif %}" {% if student_saw_problem %}onclick="openProblem('{{ url_for('view_block', problem_id=problem[0]) }}')" {% endif %}>
-            {{ problem[1] }} - {{ problem[2] }}
-        </a>
+            <a href="/view_block/{{ problem[0] }}" class="btn">{{ problem[1] }} - {{ problem[2] }}</a>
         {% endfor %}
         <a href="/upload" class="btn-upload">Upload new questions to Database</a>
     </main>
-    <script>
-        function openProblem(url) {
-            window.location.href = url;
-        }
-    </script>
 </body>
