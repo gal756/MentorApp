@@ -17,12 +17,6 @@ function checkCode() {
     // Normalize the code strings
     var normalizedUserCode = normalizeCode(userCode);
     var normalizedSolutionCode = normalizeCode(solutionCode);
-
-    console.log("User Code:", userCode);
-    console.log("Normalized User Code:", normalizedUserCode);
-    console.log("Solution Code:", solutionCode);
-    console.log("Normalized Solution Code:", normalizedSolutionCode);
-
     if(normalizedUserCode === normalizedSolutionCode) {
         alert("Correct! 😊");
     } else {
