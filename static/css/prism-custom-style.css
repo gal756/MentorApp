@@ -96,3 +96,11 @@ main {
 code {
     white-space: pre-wrap;
 }
+
+.header_a {
+    background-color: #4682b4;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+}
