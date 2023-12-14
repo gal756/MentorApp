@@ -109,3 +109,24 @@ main {
     margin: 0 auto; /* Center the content */
     text-align: justify; /* Justify text for better readability */
 }
+
+footer {
+    text-align: center;
+    margin-top: 5rem;
+    padding: 10px;
+    background-color: #4682b4;
+    color: white;
+}
+
+footer p {
+    margin: 0;
+}
+
+footer a {
+    color: white;
+    text-decoration: underline;
+}
+
+footer a:hover {
+    color: #2b4f81; /* Change the link color on hover */
+}
