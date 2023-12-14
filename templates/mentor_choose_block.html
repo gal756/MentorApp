@@ -17,7 +17,7 @@
     </header>
     <main>
         {% for problem in problems %}
-            <a href="/view_block/{{ problem[0] }}" class="btn {% if selected_problem_id == problem[0] %}selected-problem{% endif %}">{{ problem[1] }} - {{ problem[2] }}</a>
+            <a href="/view_block/{{ problem[0] }}" class="btn" data-problem-id="{{ problem[0] }}" onclick="markSelected(this)">{{ problem[1] }} - {{ problem[2] }}</a>
         {% endfor %}
         <a href="/upload" class="btn-upload">Upload new questions to Database</a>
     </main>
@@ -26,6 +26,23 @@
     <script>
         var socket = io.connect('http://' + document.domain + ':' + location.port + '/mentor');
 
+        function markSelected(button) {
+            var problemId = button.getAttribute('data-problem-id');
+
+            // Remove the 'selected-problem' class from all buttons
+            var buttons = document.querySelectorAll('.btn');
+            buttons.forEach(function (btn) {
+                btn.classList.remove('selected-problem');
+            });
+
+            // Add the 'selected-problem' class to the clicked button
+            button.classList.add('selected-problem');
+
+            // Send the selected problem ID to the server
+            socket.emit('student_selected_problem', { problem_id: problemId });
+        }
+
+        // Listen for updates from the server
         socket.on('update_selected_problem', function(data) {
             var problemId = data.problem_id;
 
