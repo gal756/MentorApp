@@ -20,12 +20,12 @@ The Mentor Web App is a collaborative coding platform designed to facilitate rem
  4.Enhanced Learning: The web app aims to create an immersive learning experience by combining real-time collaboration, syntax highlighting, and a structured workflow between mentors and students.
 
 ## Technologies Used:
-Backend:
-1.Flask (Python web framework)
-2.Flask-SocketIO for WebSocket communication
-3.psycopg2 for PostgreSQL database interaction
-Frontend:
-1.HTML, CSS, and JavaScript
+Backend:  
+1.Flask (Python web framework)  
+2.Flask-SocketIO for WebSocket communication  
+3.psycopg2 for PostgreSQL database interaction  
+Frontend:  
+1.HTML, CSS, and JavaScript  
 2.Highlight.js (or equivalent library) for syntax highlighting
 
 ## Contributing:
