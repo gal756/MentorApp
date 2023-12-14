@@ -11,6 +11,7 @@ header, .header_a {
     padding: 10px;
     text-align: center;
     text-decoration: none;
+    font-family: 'DM Serif Display', serif;
 }
 
 header h1 {
