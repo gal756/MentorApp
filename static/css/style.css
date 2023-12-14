@@ -1,27 +1,31 @@
 body {
-    font-family: 'Open Sans', sans-serif; /* Added Open Sans font family */
+    font-family: 'Open Sans', sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f0f8ff;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 header, .header_a {
     background-color: #4682b4;
     color: white;
-    padding: 10px;
     text-align: center;
     text-decoration: none;
-    font-family: 'DM Serif Display', serif;
 }
 
 header h1 {
     margin: 0;
+    padding: 20px;
+    font-family: 'DM Serif Display', serif;
 }
 
 main {
     text-align: center;
     padding: 20px;
-    position: relative; /* Added to establish a positioning context for absolute children */
+    position: relative;
+    flex: 1;
 }
 
 .btn , .btn.active {
@@ -32,12 +36,12 @@ main {
     background-color: #4682b4;
     color: white;
     border-radius: 5px;
-    top: 5rem; /* Adjusted to appear below the editing/highlighting areas */
+    top: 5rem;
 }
 
 .btn:hover, .btn.active:hover {
-    background-color: #2b4f81; /* Change the background color on hover */
-    color: white; /* Change the text color on hover */
+    background-color: #2b4f81;
+    color: white;
 }
 
 .CSHARP {
@@ -92,13 +96,11 @@ main {
     border-color: #FFFFFF;
 }
 
-/* Style for the disabled button */
 .btn.disabled {
     background-color: #808080;
     color: #ffffff;
 }
 
-/* Style for the user choice explanation */
 .user-choice-explanation {
     margin-top: 10px;
     font-style: italic;
@@ -106,21 +108,24 @@ main {
 }
 
 .app-explanation {
-    max-width: 600px; /* Adjust the max-width to your preference */
-    margin: 0 auto; /* Center the content */
-    text-align: justify; /* Justify text for better readability */
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: justify;
+}
+
+.app-main-btn {
+    margin-top: 4rem;
 }
 
 footer {
     text-align: center;
-    margin-top: 5rem;
-    padding: 10px;
+    padding: 2rem;
     background-color: #4682b4;
     color: white;
 }
 
 footer p {
-    margin: 0;
+    margin: 2rem 0;
 }
 
 footer a {
@@ -129,5 +134,5 @@ footer a {
 }
 
 footer a:hover {
-    color: #2b4f81; /* Change the link color on hover */
+    color: #2b4f81;
 }
