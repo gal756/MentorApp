@@ -86,3 +86,7 @@ main {
     color: #FFFFFF;
     border-color: #FFFFFF;
 }
+
+.highlighted-btn {
+    background-color: yellow; /* Set the desired highlighted color */
+}

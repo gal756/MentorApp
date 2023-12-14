@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, url_for , jsonify
+from flask import Flask, render_template, redirect, url_for
 from flask_socketio import SocketIO, emit
 import psycopg2
 import os
@@ -44,8 +44,8 @@ def student_block():
     return render_template('student_choose_block.html', problems=problems)
 
 
-@app.route('/mentor_choose_block')
-def mentor_block():
+@app.route('/mentor_choose_block/<int:student_saw_problem>/<int:problem_id>')
+def mentor_block(student_saw_problem, problem_id):
     try:
         conn = psycopg2.connect(**DATABASE_CONFIG)
         cur = conn.cursor()
@@ -59,7 +59,8 @@ def mentor_block():
     finally:
         cur.close()
         conn.close()
-    return render_template('mentor_choose_block.html', problems=problems)
+    return render_template('mentor_choose_block.html', problems=problems, student_saw_problem=student_saw_problem, selected_problem_id=problem_id)
+
 
 @app.route('/edit_block/<int:problem_id>')
 def edit_block(problem_id):
@@ -121,12 +122,6 @@ def upload():
         conn.close()
 
     return redirect(url_for('index'))
-
-@app.route('/update_selected_problem/<int:problem_id>', methods=['POST'])
-def update_selected_problem(problem_id):
-    # Broadcast the selected problem ID to all connected mentors through Socket.IO
-    socketio.emit('update_selected_problem', {'problem_id': problem_id}, namespace='/mentor')
-    return jsonify({'success': True})
 
 
 @socketio.on('code_change')
