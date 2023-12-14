@@ -67,7 +67,6 @@ main {
     background-color: #f80e0e;
     color: #2B10C4;
     border-radius: 5px;
-    position: relative;
     font-weight: bold;
     border: 2px solid #2B10C4;
     transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
@@ -91,4 +90,11 @@ main {
 .btn.disabled {
     background-color: #808080;
     color: #ffffff;
+}
+
+/* Style for the user choice explanation */
+.user-choice-explanation {
+    margin-top: 10px;
+    font-style: italic;
+    color: #555;
 }
