@@ -91,6 +91,4 @@ main {
 .btn.disabled {
     background-color: #808080;
     color: #ffffff;
-    cursor: not-allowed;
-    pointer-events: none;
 }
