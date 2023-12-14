@@ -5,11 +5,12 @@ body {
     background-color: #f0f8ff;
 }
 
-header {
+header, .header_a {
     background-color: #4682b4;
     color: white;
     padding: 10px;
     text-align: center;
+    text-decoration: none;
 }
 
 header h1 {
