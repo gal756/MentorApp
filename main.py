@@ -11,6 +11,7 @@ DATABASE_CONFIG = {
     "port": os.environ.get("DB_PORT", "default_port")
 }
 
+current_student_problem = None
 app = Flask(__name__)
 port = int(os.environ.get("PORT", 5000))
 socketio = SocketIO(app, cors_allowed_origins="*")
@@ -19,7 +20,6 @@ try:
     conn = psycopg2.connect(**DATABASE_CONFIG)
 except psycopg2.OperationalError as e:
     print(f"Could not connect to the database: {e}")
-
 
 @app.route('/')
 def index():
@@ -44,8 +44,8 @@ def student_block():
     return render_template('student_choose_block.html', problems=problems)
 
 
-@app.route('/mentor_choose_block')
-def mentor_block():
+@app.route('/mentor_choose_block/<int:current_student_problem>')
+def mentor_block(current_student_problem):
     try:
         conn = psycopg2.connect(**DATABASE_CONFIG)
         cur = conn.cursor()
@@ -54,22 +54,29 @@ def mentor_block():
         problems = cur.fetchall()
 
     except psycopg2.Error as e:
-        print(f"Error interacting with database: {e}")
+        print(f"Error interacting with the database: {e}")
         problems = []
     finally:
         cur.close()
         conn.close()
-    return render_template('mentor_choose_block.html', problems=problems)
+    return render_template('mentor_choose_block.html', problems=problems, current_student_problem=current_student_problem)
+
 
 @app.route('/edit_block/<int:problem_id>')
 def edit_block(problem_id):
+    global current_student_problem  # Access the global variable
     cur = conn.cursor()
     cur.execute("SELECT * FROM code_problems WHERE id = %s", (problem_id,))
     problem = cur.fetchone()
     cur.close()
+
     if problem is None:
         # Handle the case where no problem is found
         return render_template('404.html'), 404
+
+    # Update the global variable
+    current_student_problem = problem_id
+
     return render_template('edit_block.html', problem=problem)
 
 @app.route('/view_block/<int:problem_id>')

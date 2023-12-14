@@ -1,19 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/static/css/style.css">
     <title>Mentor App</title>
 </head>
+
 <body>
     <header>
         <h1>Mentor App</h1>
     </header>
     <main>
         {% for problem in problems %}
-            <a href="/view_block/{{ problem[0] }}" class="btn">{{ problem[1] }} - {{ problem[2] }}</a>
+            <a href="/view_block/{{ problem[0] }}" class="btn {% if current_student_problem == problem[0] %}active{% else %}disabled{% endif %}" {% if current_student_problem != problem[0] %}onclick="return false;"{% endif %}>
+                {{ problem[1] }} - {{ problem[2] }}
+            </a>
         {% endfor %}
         <a href="/upload" class="btn-upload">Upload new questions to Database</a>
     </main>
 </body>
+
+</html>
