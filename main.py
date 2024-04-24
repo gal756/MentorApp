@@ -80,7 +80,6 @@ def edit_block(problem_id):
     cur = conn.cursor()
     cur.execute("SELECT * FROM code_problems WHERE id = %s", (problem_id,))
     problem = cur.fetchone()
-    cur.close()
 
     if problem is None:
         # Handle the case where no problem is found
@@ -88,6 +87,7 @@ def edit_block(problem_id):
 
     # Update the global variable with the current problem being edited by a student
     current_student_problem = problem_id
+    cur.close()
 
     return render_template('edit_block.html', problem=problem)
 
@@ -97,10 +97,10 @@ def view_block(problem_id):
     cur = conn.cursor()
     cur.execute("SELECT * FROM code_problems WHERE id = %s", (problem_id,))
     problem = cur.fetchone()
-    cur.close()
     if problem is None:
         # Handle the case where no problem is found
         return render_template('404.html'), 404
+    cur.close()
     return render_template('view_block.html', problem=problem)
 
 # Route for uploading problems from files to the database
